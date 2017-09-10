@@ -1,0 +1,10 @@
+<h1>Favorited Gifs With Category: <%= @category.name %></h1>
+<h4><%= link_to "Back to Favorites by Category", user_categories_path %></h4>
+<% if session[:admin_id] != nil %>
+  <%= link_to "Delete Category", category_path(@category), method: :delete %>
+<% end %>
+<% @gifs.each do |gif| %>
+  <%= gif.name %>
+  <%= gif.image_path %>
+  <%= render partial: "favorites/favorite_button", locals: { gif: gif } %>
+<% end %>

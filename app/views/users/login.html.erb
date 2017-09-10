@@ -1,0 +1,11 @@
+<%= form_for(:user, url: users_login_path, method: :post) do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+
+  <%= f.submit("Log in as User") %>
+<% end %>
+
+<%= link_to "Back to Main", root_path %>

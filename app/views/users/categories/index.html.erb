@@ -1,0 +1,8 @@
+<h1>Favorites By Category for <%= current_user.username %></h1>
+<%= link_to "Back to Main", root_path %>
+<% @categories.each do |category| %>
+  <%= link_to category.name, user_category_path(category) %>
+  <% if session[:admin_id] != nil %>
+    <%= link_to "Delete", category_path(category), method: :delete %>
+  <% end %>
+<% end %>

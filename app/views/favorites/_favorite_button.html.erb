@@ -1,0 +1,9 @@
+<% if session[:user_id] != nil %>
+  <% if current_user.favorited?(gif) %>
+    <%= button_to 'Unfavorite', favorite_path(find_favorite(current_user, gif)), method: :delete %>
+  <% else %>
+    <%= button_to 'Favorite', gif_favorites_path(gif), method: :post %>
+  <% end %>
+<% else %>
+  <%= button_to 'Favorite', gif_favorites_path(gif), disabled: true %>
+<% end %>

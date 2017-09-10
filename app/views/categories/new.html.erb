@@ -1,0 +1,16 @@
+<h1>Create New Category:</h1>
+
+<%= form_for(@category) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.fields_for :gifs do |field| %>
+    <%= label_tag("Select From Favorites") %></br>
+    <% current_user.favorites.each do |favorite| %>
+      <%= label_tag(favorite.gif.name) %>
+      <%= field.check_box(favorite.gif.id) %>
+    <% end %>
+  <% end %>
+
+  <%= f.submit("Create Category") %>
+<% end %>
