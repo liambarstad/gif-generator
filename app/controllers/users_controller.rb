@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
       session.clear
       session[:user_id] = @user.id
-      flash[:message] = "Welcome #{current_user.username}! Logged in as User"
       redirect_to root_path
     else
       redirect_to users_login_path
@@ -19,7 +18,6 @@ class UsersController < ApplicationController
 
   def logout
     session.clear
-    flash[:message] = "Logged out"
     redirect_to root_path
   end
 

@@ -1,28 +1,8 @@
-<h1>Welcome to GifGenerator!</h1>
-<h4><%= flash[:message] %></h4>
-
-<% if session[:admin_id] == nil %>
-  <%= link_to "Login as Admin", admins_login_path %>
-<% else %>
-  <%= link_to "Logout", admins_logout_path, method: :delete %>
-<% end %>
-
-<% if session[:user_id] == nil %>
-  <%= link_to "Login as User", users_login_path %>
-<% else %>
-  <%= link_to "Logout", users_logout_path, method: :delete %>
-<% end %>
-
-<% if session[:user_id] == nil && session[:admin_id] == nil %>
-  <%= link_to "Create New User", new_user_path %>
-<% end %>
-
-<h4><%= link_to "All Gifs", gifs_path %></h4>
-<h4><%= link_to "All Categories", categories_path %></h4>
-<% if current_user != nil %>
-  <h4><%= link_to "My Favorites", user_favorites_path(current_user) %></h4>
-  <h4><%= link_to "Favorites By Category", user_categories_path %></h4>
-<% end %>
 <% if session[:admin_id] != nil %>
-  <h4><%= link_to "New Category", new_category_path %></h4>
+  <div>
+    <a><%= button_to "Create New Category", new_category_path, method: :get %></a>
+    <a><%= button_to "Create New Gif", new_gif_path, method: :get %></a>
+  </div>
 <% end %>
+<div class="main">COME ON IN, THE WATER IS <a class="funky">GUUUUUUD</a></div>
+<img class="centerimage" src="https://i.imgur.com/dE7gryK.gif">

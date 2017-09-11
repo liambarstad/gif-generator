@@ -1,10 +1,16 @@
 <h1>All Gifs</h1>
-<%= link_to "My Favorites", user_favorites_path(current_user) %>
-<%= link_to "Back to Main", root_path %>
-<% @gifs.each do |gif| %>
-<div>
-  <%= link_to gif.name, gif_path(gif.id) %>
-  <%= gif.image_path %>
-  <%= render partial: "favorites/favorite_button", locals: { gif: gif } %>
+
+<div class="container">
+  <div class="row">
+    <% @gifs.each do |gif| %>
+      <div class="col-6">
+        <div><%= link_to gif.name, gif_path(gif.id) %></div>
+        <div><img src="<%= gif.image_path %>"/></div>
+        <div><%= render partial: "favorites/favorite_button", locals: { gif: gif } %></div>
+        <% if session[:admin_id] != nil %>
+          <div><%= button_to "Delete Gif", gif_path(gif), method: :delete %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-<% end %>

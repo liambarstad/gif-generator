@@ -1,0 +1,35 @@
+<h1>Create New Gif:</h1>
+
+<h4>reminder: by default, the gif will be put into a category named by what you initially searched. It can then be removed from this category at any time or put into other categories. Gifs that are created are automatically favorited.</h4>
+<h4>Search for gifs:</h4>
+
+<%= form_tag(controller: "gifs", action: "search", method: :get) do %>
+  <%= label_tag(:query, "search") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search GIPHY") %>
+<% end %>
+
+<% if @searched_gifs != nil %>
+  <%= form_for(@gif) do |f| %>
+    <div><a><%= f.label :name %></a>
+    <a><%= f.text_field :name %></a></div>
+
+    <%= f.submit("Post Gif") %>
+
+    <%= f.fields_for :image_path do |field| %>
+      <%= label_tag("Search Results") %>
+      <div class="container">
+        <div class="row">
+          <% @searched_gifs.each do |gif_data| %>
+            <div class="col-6">
+              <div><img src="<%= gif_data %>"/></div>
+              <div class="checkbox"><%= field.check_box(gif_data) %></div>
+            </div>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+
+  <% end %>
+
+<% end %>

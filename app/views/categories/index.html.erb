@@ -1,11 +1,14 @@
 <h1>All Categories</h1>
-<%= link_to "Back to Main", root_path %>
-<ul>
-<% @categories.each do |category| %>
-  <li><%= link_to category.name, category_path(category) %>
-    <% if session[:admin_id] != nil %>
-      <%= button_to "Delete", category_path(category), method: :delete %>
+
+<div class="container">
+  <div class="row">
+    <% @categories.each do |category| %>
+    <div class="col-4">
+      <a><%= link_to category.name, category_path(category) %>
+        <% if session[:admin_id] != nil %>
+          <%= button_to "Delete", category_path(category), method: :delete %>
+        <% end %></a>
+    </div>
     <% end %>
-  </li>
-<% end %>
-</ul>
+  </div>
+</div>

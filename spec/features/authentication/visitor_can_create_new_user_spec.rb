@@ -15,6 +15,7 @@ RSpec.feature "visitor can create new user" do
     click_on("Create")
 
     expect(current_path).to eq(root_path)
-    expect(page).to have_content("Welcome New User #{user.username}!")
+    expect(page).to have_content("Login as Admin")
+    expect(page).to have_content("Logout")
   end
 end

@@ -25,10 +25,6 @@ RSpec.feature "user can see gifs sorted by category" do
     expect(page).to have_content(gif2.name)
     expect(page).to have_content(gif3.name)
     expect(page).to_not have_content(gif4.name)
-    expect(page).to have_content(gif1.image_path)
-    expect(page).to have_content(gif2.image_path)
-    expect(page).to have_content(gif3.image_path)
-    expect(page).to_not have_content(gif4.image_path)
 
     click_on("Back to Categories")
     click_on(category2.name)
@@ -37,9 +33,5 @@ RSpec.feature "user can see gifs sorted by category" do
     expect(page).to have_content(gif4.name)
     expect(page).to_not have_content(gif1.name)
     expect(page).to_not have_content(gif3.name)
-    expect(page).to have_content(gif2.image_path)
-    expect(page).to have_content(gif4.image_path)
-    expect(page).to_not have_content(gif1.image_path)
-    expect(page).to_not have_content(gif3.image_path)
   end
 end

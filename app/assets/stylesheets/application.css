@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+@keyframes getdown {
+  0%   {color:red; left:0px; top:0px;}
+ 33%  {color:blue; left:200px; top:200px;}
+ 66%  {color:green; left:0px; top:200px;}
+ 100% {color:red; left:0px; top:0px;}
+}
+h1.mainheader {
+  background: url(header_gradient.jpg);
+  font-size: 60px;
+  margin: 30px;
+}
+body {
+  background: url(kanye.jpg);
+}
+a.funky {
+  animation-name: getdown;
+  animation-duration: 0.25s;
+  animation-iteration-count: infinite;
+}
+div {
+  text-align: center;
+}
+div.main {
+  font-size: 40px;
+}
+div.green {
+  background: green;
+  color: white;
+}
+img.centerimage {
+  display: block;
+  margin: auto;
+}

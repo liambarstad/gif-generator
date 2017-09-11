@@ -1,10 +1,16 @@
 <h1>Gifs for <%= @category.name %></h1>
-<h4><%= link_to "Back to Categories", categories_path %></h4>
+
 <% if session[:admin_id] != nil %>
-  <%= link_to "Delete Category", category_path(@category), method: :delete %>
+  <%= button_to "Delete Category", category_path(@category), method: :delete %>
 <% end %>
-<% @category.gifs.each do |gif| %>
-  <%= gif.name %>
-  <%= gif.image_path %>
-  <%= render partial: "favorites/favorite_button", locals: { gif: gif } %>
-<% end %>
+<div class="container">
+  <div class="row">
+  <% @category.gifs.each do |gif| %>
+    <div class="col-6">
+      <%= gif.name %>
+      <img src="<%= gif.image_path %>"/>
+      <%= render partial: "favorites/favorite_button", locals: { gif: gif } %>
+    </div>
+  <% end %>
+  </div>
+</div>

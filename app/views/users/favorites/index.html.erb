@@ -1,8 +1,13 @@
 <h1>Favorited Gifs for <%= current_user.username %></h1>
-<%= link_to "All Gifs", gifs_path %>
-<%= link_to "Back to Main", root_path %>
-<% @favorites.each do |favorite| %>
-  <%= link_to favorite.gif.name, gif_path(favorite.gif) %>
-  <%= favorite.gif.image_path %>
-  <%= render partial: "favorites/favorite_button", locals: { gif: favorite.gif } %>
-<% end %>
+
+<div class="container">
+  <div class="row">
+  <% @favorites.each do |favorite| %>
+    <div class="col-6">
+      <div><%= link_to favorite.gif.name, gif_path(favorite.gif) %></div>
+      <div><img src="<%= favorite.gif.image_path %>"></div>
+      <div><%= render partial: "favorites/favorite_button", locals: { gif: favorite.gif } %></div>
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -6,10 +6,17 @@
 
   <%= f.fields_for :gifs do |field| %>
     <%= label_tag("Select From Favorites") %></br>
-    <% current_user.favorites.each do |favorite| %>
-      <%= label_tag(favorite.gif.name) %>
-      <%= field.check_box(favorite.gif.id) %>
-    <% end %>
+    <div class="container">
+      <div class="row">
+      <% current_user.favorites.each do |favorite| %>
+        <div class="col-6">
+          <div><%= label_tag(favorite.gif.name) %></div>
+          <div><img src="<%= favorite.gif.image_path %>"/></div>
+          <div><%= field.check_box(favorite.gif.id) %></div>
+        </div>
+      <% end %>
+      </div>
+    </div>
   <% end %>
 
   <%= f.submit("Create Category") %>

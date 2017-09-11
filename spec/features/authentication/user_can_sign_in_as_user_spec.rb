@@ -14,7 +14,6 @@ RSpec.feature "user can sign in as user" do
     click_on("Log in as User")
 
     expect(current_path).to eq("/")
-    expect(page).to have_content("Welcome #{user.username}! Logged in as User")
     expect(page).to_not have_content("Log in as User")
     expect(page).to have_content("Logout")
   end

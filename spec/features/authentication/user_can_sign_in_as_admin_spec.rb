@@ -14,7 +14,6 @@ RSpec.feature "user can sign in as admin" do
     click_on("Log in as Admin")
 
     expect(current_path).to eq("/")
-    expect(page).to have_content("Welcome #{admin.username}! Logged in as Admin")
     expect(page).to_not have_content("Log in as Admin")
     expect(page).to have_content("Logout")
   end

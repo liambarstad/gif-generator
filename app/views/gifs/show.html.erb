@@ -1,5 +1,9 @@
-<%= @gif.name %>
+<div><%= @gif.name %></div>
 
-<%= @gif.image_path %>
+<div><img src="<%= @gif.image_path %>"/></div>
 
-<%= render partial: "favorites/favorite_button", locals: { gif: @gif } %>
+<div><%= render partial: "favorites/favorite_button", locals: { gif: @gif } %></div>
+
+<% if session[:admin_id] != nil %>
+  <div><%= link_to "Delete Gif", gif_path(@gif), method: :delete %></div>
+<% end %>

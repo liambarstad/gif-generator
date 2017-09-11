@@ -10,7 +10,6 @@ class AdminsController < ApplicationController
     if @admin && @admin.authenticate(params[:user][:password]) && @admin.admin
       session.clear
       session[:admin_id] = @admin.id
-      flash[:message] = "Welcome #{current_user.username}! Logged in as Admin"
       redirect_to root_path
     else
       redirect_to admins_login_path
@@ -19,7 +18,6 @@ class AdminsController < ApplicationController
 
   def logout
     session.clear
-    flash[:message] = "Logged out"
     redirect_to root_path
   end
 
